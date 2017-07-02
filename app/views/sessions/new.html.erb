@@ -1,0 +1,21 @@
+<h2>登陆</h2>
+
+<%= form_for :session, url: sessions_path do |f| %>
+
+<p>
+  <%= f.label :phone_number %><br>
+  <%= f.text_field :phone_number %>
+</p>
+
+<p>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+
+<% end %>

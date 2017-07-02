@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DewSet</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <ul>
+        <% if current_user %>
+          <li><a href="#"><%= current_user.nick_name %></a></li>
+          <li><a href="/sessions/<%= current_user.id %>">退出</a></li>
+        <% else %>
+          <li><a href="/users/new">注册</a></li>
+          <li><a href="/sessions/new">登陆</a></li>
+        <% end %>
+      </ul>
+    </header>
+    <%= yield %>
+  </body>
+</html>

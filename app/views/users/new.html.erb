@@ -1,0 +1,44 @@
+<%= form_for :user, url: users_path do |f| %>
+
+<p>
+  <%= f.label :avatar %><br>
+  <%= f.file_field :avatar %>
+</p>
+
+<p>
+  <%= f.label :nick_name %><br>
+  <%= f.text_field :nick_name %>
+</p>
+
+<p>
+  <%= f.label :phone_number %><br>
+  <%= f.text_field :phone_number %>
+</p>
+
+<p>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation %>
+</p>
+
+<p>
+  <%= f.radio_button(:gender, 0) %>
+  <%= f.label(:gender, '男') %>
+  <%= f.radio_button(:gender, 1) %>
+  <%= f.label(:gender, '女') %>
+</p>
+
+<p>
+  <%= f.label :place %><br>
+  <%= f.text_field :place %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>
