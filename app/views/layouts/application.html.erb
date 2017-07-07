@@ -11,6 +11,7 @@
   <body>
     <header>
       <ul>
+        <li><a href="/photos">相册</a></li>
         <% if current_user %>
           <li><a href="#"><%= current_user.nick_name %></a></li>
           <li><a href="/sessions/<%= current_user.id %>">退出</a></li>

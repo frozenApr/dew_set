@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -28,11 +28,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'qiniu'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bcrypt-ruby', '3.1.5'
+# gem 'bcrypt-ruby', '3.1.5'
 gem 'awesome_print'
 
 group :development, :test do
