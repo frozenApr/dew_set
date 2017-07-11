@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'qiniu'
 gem 'rubocop', '~> 0.49.0', require: false
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.0.1'
@@ -37,8 +36,7 @@ gem 'ransack', '~> 1.8.2'
 gem 'rucaptcha'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
-
-
+gem 'qiniu', '~> 6.8.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # gem 'bcrypt-ruby', '3.1.5'
