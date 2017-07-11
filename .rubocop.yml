@@ -1,0 +1,46 @@
+Rails:
+  Enabled: true
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/*.rb
+    - Gemfile
+    - config/**/*
+    - test/test_helper.rb
+Documentation:
+  Enabled: false
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - db/migrate/*.rb
+Metrics/LineLength:
+  Max: 120
+  IgnoreCopDirectives: true
+Metrics/MethodLength:
+  Max: 12
+  Exclude:
+    - db/migrate/*.rb
+    - app/helpers/application_helper.rb
+Metrics/BlockLength:
+  Exclude:
+    - '**/routes.rb'
+    - config/environments/*.rb
+    - lib/capistrano/tasks/*.rake
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Rails/SkipsModelValidations:
+  Blacklist:
+    - decrement!
+    - decrement_counter
+    - increment!
+    - increment_counter
+    - toggle!
+    - touch
+    - update_all
+    - update_attribute
+    - update_column
+    # - update_columns
+    - update_counters
+Rails/ApplicationRecord:
+  Exclude:
+    - app/models/community.rb

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def create
     user = User.find_by(phone_number: params[:session][:phone_number])
     if user && user.authenticate(params[:session][:password])
