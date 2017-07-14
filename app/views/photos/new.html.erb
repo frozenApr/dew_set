@@ -1,9 +1,11 @@
 <%= form_for @photo do |f| %>
 
+  <%= f.fields_for :images do |ff| %>
   <p>
-    <%= f.label :title %><br>
-    <%= f.file_field :title %>
+    <%= f.label :image %><br>
+    <%= f.file_field :url %>
   </p>
+  <% end %>
 
   <p>
     <%= f.label :title %><br>
@@ -25,3 +27,22 @@
   </p>
 
 <% end %>
+
+
+<script type="text/javascript">
+$(document).on('change', 'input[name="images[]"]', function () {
+  //图片预览
+  if ($(this).val() == '') {
+    $(this).prev().attr('src', '');
+  }
+  else {
+    $(this).prev().attr('src', URL.createObjectURL(this.files[0]))
+  }
+  //增加上传按钮
+  var length = $("input[name='images[]']").length
+  var this_input_index = $("input[name='images[]']").index($(this))
+  if (this_input_index + 1 == length) {
+    $(".images-part").append('<img src="" class="upload-img"><input type="file" class="upload-input" name="images[]">');
+  }
+});
+</script>
