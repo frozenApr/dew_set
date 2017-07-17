@@ -4,9 +4,7 @@ class Image < ApplicationRecord
     put_policy = Qiniu::Auth::PutPolicy.new(bucket, nil, 3600)
     put_policy.callback_body= config[:callback_body]
     uptoken = Qiniu::Auth.generate_uptoken(put_policy)
-
-    { uptoken: uptoken, bucket: bucket, domain: domain }
-
+    # { uptoken: uptoken, bucket: bucket, domain: domain }
   end
 
   def config
@@ -16,7 +14,7 @@ class Image < ApplicationRecord
   def url
     "http://#{Qiniu::QiniuDomain['ceshi-photo']}/#{key}"
   end
-  
+
   def domain
     "http://#{Qiniu::QiniuDomain['ceshi-photo']}"
   end

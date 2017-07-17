@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
   def new
     @photo = Photo.new
+    @uptoken = Image.new.upload
+    @domain = Image.new.domain
   end
 
   def create

@@ -3,7 +3,7 @@ default: &defaults
   :bucket_name: 'ceshi-photo'
   :token_expire: 86400
   # :callback_url: "<%= ENV['DOMAIN'] %>/photos/qiniu_callback"
-  :callback_url: "http:127.0.0.1:4000/photos/qiniu_callback"
+  # :callback_url: "http:127.0.0.1:4000/photos/qiniu_callback"
   :callback_body: 'name=$(fname)&size=$(fsize)&w=$(imageInfo.width)&h=$(imageInfo.height)&hash=$(etag)&timestamp=$(x:timestamp)&bucket_name=$(x:bucket_name)'
   :callback_body_type: application/x-www-form-urlencoded
   :escape: 1
