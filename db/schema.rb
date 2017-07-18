@@ -14,8 +14,11 @@ ActiveRecord::Schema.define(version: 20170607150931) do
 
   create_table "images", force: :cascade do |t|
     t.string "url"
+    t.integer "imageable_id"
+    t.string "imageable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["imageable_id"], name: "index_images_on_imageable_id"
   end
 
   create_table "photos", force: :cascade do |t|

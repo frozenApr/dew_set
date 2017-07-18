@@ -1,8 +1,25 @@
 <div class="container">
    <div class="row">
       <div class="col-sm-12">
+        <div class="photo-list">
+          <ul>
+            <% @photos.each do |p| %>
+            <li>
+              <%= link_to photo_path(p) do %>
+                <em class="desc"><%= p.title %></em>
+                <img src="<%= p.images.first.url %>">
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class=""style="clear:both"></div>
         <%= link_to 'new', new_photo_path %>
       </div>
    </div>
-   <div class="row">...</div>
 </div>
+<style media="screen">
+.photo-list li{float: left;width:200px;height:200px;overflow: hidden;margin-right: 20px;margin-bottom: 10px}
+.photo-list img{width: 200px;min-height: 200px}
+.photo-list .desc{position: absolute;z-index: 111;;text-decoration: none;bottom: 170px}
+</style>
