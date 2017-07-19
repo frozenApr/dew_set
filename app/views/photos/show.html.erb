@@ -81,7 +81,7 @@
         $.each(rowList,function(idx, imgInfo){
           rowWidth += imgInfo.width;
           if(rowWidth  > clientWidth ){
-            rowList.pop();
+            // rowList.pop();
             rowWidth = rowWidth - lastImgInfo.width;
             rowHeight = clientWidth * _this.baseHeight / rowWidth;//！！！！！！再次缩放
             _this.createRow(rowHeight);
@@ -93,7 +93,7 @@
         });
       },
       createRow: function(rowHeight){    // 4 正式摆放图片
-        console.log('createRow');
+        // console.log('createRow');
         var $rowCt = $('<div class="img-row"></div>');
         $.each(this.rowList, function(idx, imgInfo){
           var $imgCt = $('<div class="img-box"></div>'),
@@ -102,7 +102,7 @@
               $imgCt.append($img);
               $rowCt.append($imgCt);
         });
-        console.log(this.$ct);
+        // console.log(this.$ct);
         this.$ct.append($rowCt);
       },
     };

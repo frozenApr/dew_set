@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @images = @photo.images.recently
+    @images = @photo.images
     respond_to do |format|
       format.html
       format.json { render json: @images.pluck(:url) }

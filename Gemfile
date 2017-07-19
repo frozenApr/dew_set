@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'rubocop', '~> 0.49.0', require: false
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.0.1'
 gem 'ransack', '~> 1.8.2'
@@ -57,6 +56,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
+  gem 'awesome_print'
+  gem 'rubocop', '~> 0.49.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
