@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class User::PhotosController < ApplicationController
   before_action :set_photo, only: %i[show edit update destroy]
   def new
     @photo = Photo.new
@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.new(photo_params)
     if @photo.save
       params[:photo][:images][:url].each { |url| @photo.images.create(url: url) }
-      redirect_to :root
+      redirect_to user_photos_path
     else
       render 'new'
     end
@@ -18,6 +18,11 @@ class PhotosController < ApplicationController
 
   def index
     @photos = current_user.photos.recently
+  end
+
+  def destroy
+    @photo.destroy
+    redirect_to user_photos_path, notice: '相册已删除！'
   end
 
   def show

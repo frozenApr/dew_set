@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :users, only: [:new, :create, :update]
   resources :photos
+  resources :posts
   resources :sessions, only: [:new, :create, :destroy]
+
+  namespace :user do
+    resources :photos
+    resources :posts
+  end
 
 end

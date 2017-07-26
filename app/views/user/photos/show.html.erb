@@ -1,13 +1,3 @@
-<!-- <div class="photo_image">
-  <% @images.each do |i| %>
-  <img src="<%= i.url %>" alt="">
-  <% end %>
-</div>
-
-<style media="screen">
-  .photo_image img{width: 200px;height:200px}
-</style> -->
-<!DOCTYPE html>
 
 <style>
     .img-preview{
@@ -15,7 +5,7 @@
       margin: 0 auto;
     }
     .img-row {
-      margin-bottom: 8px;
+      /*margin-bottom: 8px;*/
     }
     .img-row:after {
       content: "";
@@ -29,9 +19,21 @@
       padding-left: 0;
     }
 </style>
-	<div class="img-preview">
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="img-preview">
 
-	</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 	<script>
     function Barrels($ct) {    //0 创建对象
@@ -45,7 +47,7 @@
       loadImg: function() {   //2 加载图片
         var _this = this;    //缓存全局this
         $.ajax({
-          url: '/photos/<%= @photo.id %>',
+          url: '/user/photos/<%= @photo.id %>',
           type: 'get',
           dataType: 'json',
           success: function(data){

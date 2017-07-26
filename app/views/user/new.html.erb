@@ -1,0 +1,57 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= form_for :user, url: users_path do |f| %>
+
+          <p>
+            <%= f.label :avatar %><br>
+            <%= f.file_field :avatar %>
+          </p>
+
+          <p>
+            <%= f.label :nick_name %><br>
+            <%= f.text_field :nick_name %>
+          </p>
+
+          <p>
+            <%= f.label :phone_number %><br>
+            <%= f.text_field :phone_number %>
+          </p>
+
+          <p>
+            <%= f.label :password %><br>
+            <%= f.password_field :password %>
+          </p>
+
+          <p>
+            <%= f.label :password_confirmation %><br>
+            <%= f.password_field :password_confirmation %>
+          </p>
+
+          <p>
+            <%= f.radio_button(:gender, 0) %>
+            <%= f.label(:gender, '男') %>
+            <%= f.radio_button(:gender, 1) %>
+            <%= f.label(:gender, '女') %>
+          </p>
+
+          <p>
+            <%= f.label :place %><br>
+            <%= f.text_field :place %>
+          </p>
+
+          <p>
+            <%= f.submit '注册' %>
+          </p>
+
+          <% end %>
+
+          <p>已有账号？<%= link_to "立即登录!", new_session_path %></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

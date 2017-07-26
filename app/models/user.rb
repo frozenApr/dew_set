@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :nick_name, uniqueness: true
 
   has_many :photos
+  has_many :posts
 
   before_create :create_remember_token
 

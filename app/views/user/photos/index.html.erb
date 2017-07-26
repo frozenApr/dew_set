@@ -1,0 +1,43 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="navbar-action right">
+            <%= link_to '上传照片', new_user_photo_path , class: 'btn btn-primary'%>
+          </div>
+          <div class="photo-list clear">
+            <ul>
+              <% @photos.each do |p| %>
+              <li>
+                <div class="img_wrapper">
+                  <img src="<%= p.images.first.url %>">
+                  <p class="desc img_title"><%= link_to p.title, user_photo_path(p), class:'white_link'%> </p>
+                  <p class="desc img_count"><%= p.images.count %>张图片<span class="img_time"><%= p.created_at.strftime('%Y-%m-%d') %></span></p>
+                  <%= link_to [:user, p], method: :delete, data:{confirm: '确定删除相册?'} do %>
+                   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  <% end %>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+.navbar-action {margin-top:20px}
+.photo-list li{float: left;width:23%; height:200px;overflow: hidden;margin:1%}
+.photo-list img{width: 200px;min-height: 200px}
+.photo-list .img_wrapper{position:relative;}
+.photo-list .desc{position:absolute;left:5%; color:white; font-weight:200; z-index: 111;}
+.photo-list .img_title{top:155px;}
+.img_count{top:175px;font-size: 13px}
+.photo-list .img_wrapper .img_time{margin-left:10px;font-size: 13px}
+.glyphicon-trash {position: absolute; left:72%; top:5px;font-size:20px; display: none;}
+.img_wrapper:hover .glyphicon-trash{display: block}
+.glyphicon-trash:hover{cursor: pointer}
+</style>

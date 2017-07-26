@@ -1,0 +1,64 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="navbar-action right">
+            <%= link_to '我要约拍',  new_user_post_path , class: 'btn btn-primary'%>
+          </div>
+          <div class="post-list clear">
+            <ul>
+              <% @posts.each do |p| %>
+              <li>
+                <div class="post_wrapper">
+                  <div class="post_content">
+                    <div class="section_first">
+                      <h4 class="left"><%= p.title %></h4>
+                      <div class="dropdown right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to '删除', [:user, p], method: :delete, data:{confirm: '确定删除?'} %></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="section_second left clear">
+                      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span><%= p.place %></span>
+                      <span class="glyphicon glyphicon-time" aria-hidden="true"><span><%= p.time %></span>
+                      <span class="glyphicon glyphicon-yen" aria-hidden="true"><span><%= p.price %></span>
+                      <span>成片:<%= p.outcome %></span>
+                    </div>
+                    <div class="section_third right">
+                      <span>可提供服装:<%= p.has_clothing %></span>
+                      <span>可提供造型:<%= p.has_modelling %></span>
+                    </div>
+                    <div class="section_fourth clear">
+                      <%= p.content %>
+                      <div class="img-list">
+                        <% p.images.each do |i| %>
+                          <img src="<%= i.url %>">
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+.navbar-action {margin-top:20px;margin-bottom:20px}
+.post-list .post_wrapper{background: #e6e6ff; margin: 10px auto;}
+.post-list .post_content{padding: 15px 10px}
+.post-list ul {padding-left:0px }
+.post-list li{width:100%; list-style: none}
+.post-list img{width: 200px;min-height: 200px}
+.post-list .section_third, .section_second {margin:10px;color: #e56820;}
+.post-list span{margin-right:10px}
+</style>

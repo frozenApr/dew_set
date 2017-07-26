@@ -1,0 +1,9 @@
+.nav-data{margin: 15px !important; padding-right:20%!important;}
+.navbar-header {margin-top: 15px !important; padding-left: 20% !important}
+.bs-docs-container{margin: 80px  auto 0 auto; padding-left:20%;padding-right:20%; padding-top: 40px;background: #ececf3;}
+.bs-docs-section{background:#fff;min-height: 860px; }
+.clear {clear:both}
+.right {float: right}
+.left {float: left}
+a.white_link{color: white}
+a.white_link:hover{text-decoration:none;color:black}
