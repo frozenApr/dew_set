@@ -7,7 +7,7 @@ module SessionsHelper
   end
 
   def sign_out
-     User.find(params[:id]).remember_token = nil
+    User.find(params[:id]).remember_token = nil
     # self.remember_token = nil
     cookies.delete(:remember_token)
   end
