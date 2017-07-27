@@ -3,9 +3,35 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-
+          <div class="photos_section">
+            <ul>
+              <% @photos.each do |photo| %>
+                <li>
+                  <img src="<%= photo.images.first.url %>">
+                  <%= link_to '喜欢', like_user_photo_path(photo), method: :post %>
+                  <%= link_to '收藏', star_user_photo_path(photo), method: :post %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="posts_section clear">
+            <ul>
+              <% @posts.each do |post| %>
+                <li>
+                  <div class="">
+                    <p><%= post.title %></p>
+                    <p><%= post.content %></p>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<style media="screen">
+  .bs-docs-section li{float: left;width:23%; height:200px;overflow: hidden;margin:1%}
+  .bs-docs-section img{width: 200px;min-height: 200px}
+</style>

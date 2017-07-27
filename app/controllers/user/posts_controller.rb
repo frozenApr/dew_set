@@ -1,6 +1,6 @@
 class User
   class PostsController < ApplicationController
-    before_action :set_post, only: %i[show edit update destroy]
+    before_action :set_post, only: %i[show edit update destroy star]
     def new
       @post = Post.new
       @uptoken = Image.new.uptoken
@@ -32,6 +32,11 @@ class User
     def destroy
       @post.destroy
       redirect_to user_posts_path
+    end
+
+    def star
+      current_user.create_action(:star, target: @post)
+      redirect_to :back
     end
 
     private

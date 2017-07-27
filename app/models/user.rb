@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   before_create :create_remember_token
 
+  action_store :like, :photo, counter_cache: true
+  action_store :star, :photo, counter_cache: true, user_counter_cache: true
+  action_store :follow, :user, counter_cache: 'followers_count', user_counter_cache: 'following_count'
+
   def self.new_remember_token
     SecureRandom.urlsafe_base64
   end

@@ -40,7 +40,7 @@ gem 'qiniu', '~> 6.8.1'
 # gem 'capistrano-rails', group: :development
 # gem 'bcrypt-ruby', '3.1.5'
 gem 'awesome_print'
-
+gem 'action-store'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

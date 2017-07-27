@@ -1,6 +1,6 @@
 class User
   class PhotosController < ApplicationController
-    before_action :set_photo, only: %i[show edit update destroy]
+    before_action :set_photo, only: %i[show edit update destroy like star]
     def new
       @photo = Photo.new
       @uptoken = Image.new.uptoken
@@ -32,6 +32,16 @@ class User
         format.html
         format.json { render json: @images.pluck(:url) }
       end
+    end
+
+    def like
+      current_user.create_action(:like, target: @photo)
+      redirect_to :root
+    end
+
+    def star
+      current_user.create_action(:star, target: @photo)
+      redirect_to :root
     end
 
     private

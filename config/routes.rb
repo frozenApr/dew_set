@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   namespace :user do
-    resources :photos
+    resources :photos do
+      member do
+        post :follow
+        post :star
+      end
+    end
     resources :posts
   end
 
