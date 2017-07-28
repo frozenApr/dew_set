@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :user do
     resources :photos do
       member do
-        post :follow
+        post :like
         post :star
       end
     end

@@ -6,11 +6,19 @@
           <div class="photos_section">
             <ul>
               <% @photos.each do |photo| %>
-                <li>
+              <li>
+                <div class="img_wrapper">
                   <img src="<%= photo.images.first.url %>">
-                  <%= link_to '喜欢', like_user_photo_path(photo), method: :post %>
+                  <div class="img_desc">
+                    <span class="img_title"><%= photo.title %></span>
+                    <span class="img_author"><%= photo.user.nick_name %></span>
+                  </div>
+                </div>
+                <p>
+                  <%= link_to '点赞', like_user_photo_path(photo), method: :post %><span><%= photo.likes_count %></span>
                   <%= link_to '收藏', star_user_photo_path(photo), method: :post %>
-                </li>
+                </p>
+              </li>
               <% end %>
             </ul>
           </div>
@@ -22,6 +30,7 @@
                     <p><%= post.title %></p>
                     <p><%= post.content %></p>
                   </div>
+
                 </li>
               <% end %>
             </ul>
@@ -32,6 +41,10 @@
   </div>
 </div>
 <style media="screen">
-  .bs-docs-section li{float: left;width:23%; height:200px;overflow: hidden;margin:1%}
-  .bs-docs-section img{width: 200px;min-height: 200px}
+  .photos_section li{float: left;height:300px;width:23%;}
+  .photos_section .img_wrapper{position:relative; height:200px;overflow: hidden;margin:1%}
+  .photos_section .img_desc{position:absolute;padding:3%;height: 40px;width:200px;bottom:0px;color:white;font-weight: 200;background:rgba(23, 10, 10, 0.45)}
+  .photos_section img{width: 200px;min-height: 200px}
+  .photos_section .img_title{font-size:14px}
+  .photos_section .img_author{float: right}
 </style>

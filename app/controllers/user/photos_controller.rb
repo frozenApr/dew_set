@@ -35,12 +35,12 @@ class User
     end
 
     def like
-      current_user.create_action(:like, target: @photo)
+      current_user.like_photo?(@photo) ? current_user.unlike_photo(@photo) : current_user.like_photo(@photo)
       redirect_to :root
     end
 
     def star
-      current_user.create_action(:star, target: @photo)
+      current_user.star_photo?(@photo) ? current_user.unstar_photo(@photo) : current_user.star_photo(@photo)
       redirect_to :root
     end
 
