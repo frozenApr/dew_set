@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="navbar-action right">
-            <%= link_to '上传照片', new_user_photo_path , class: 'btn btn-primary'%>
+            <%= link_to '上传照片', new_users_photo_path , class: 'btn btn-primary'%>
           </div>
           <div class="photo-list clear">
             <ul>
@@ -12,9 +12,9 @@
               <li>
                 <div class="img_wrapper">
                   <img src="<%= p.images.first.url %>">
-                  <p class="desc img_title"><%= link_to p.title, user_photo_path(p), class:'white_link'%> </p>
+                  <p class="desc img_title"><%= link_to p.title, users_photo_path(p), class:'white_link'%> </p>
                   <p class="desc img_count"><%= p.images.count %>张图片<span class="img_time"><%= p.created_at.strftime('%Y-%m-%d') %></span></p>
-                  <%= link_to [:user, p], method: :delete, data:{confirm: '确定删除相册?'} do %>
+                  <%= link_to [:users, p], method: :delete, data:{confirm: '确定删除相册?'} do %>
                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                   <% end %>
                 </div>

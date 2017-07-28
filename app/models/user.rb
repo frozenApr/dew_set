@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :photos
   has_many :posts
+  has_many :comments
 
   before_create :create_remember_token
 

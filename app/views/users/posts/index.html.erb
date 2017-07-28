@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="navbar-action right">
-            <%= link_to '我要约拍',  new_user_post_path , class: 'btn btn-primary'%>
+            <%= link_to '我要约拍',  new_users_post_path , class: 'btn btn-primary'%>
           </div>
           <div class="post-list clear">
             <ul>
@@ -19,7 +19,7 @@
                           <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
                         </a>
                         <ul class="dropdown-menu">
-                          <li><%= link_to '删除', [:user, p], method: :delete, data:{confirm: '确定删除?'} %></li>
+                          <li><%= link_to '删除', [:users, p], method: :delete, data:{confirm: '确定删除?'} %></li>
                         </ul>
                       </div>
                     </div>

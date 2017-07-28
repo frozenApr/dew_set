@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727101944) do
+ActiveRecord::Schema.define(version: 20170728060830) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20170727101944) do
     t.datetime "updated_at", null: false
     t.index ["target_type", "target_id", "action_type"], name: "index_actions_on_target_type_and_target_id_and_action_type"
     t.index ["user_type", "user_id", "action_type"], name: "index_actions_on_user_type_and_user_id_and_action_type"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "author_id"
+    t.integer "original_id"
+    t.integer "original_author_id"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|

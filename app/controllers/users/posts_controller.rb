@@ -1,4 +1,4 @@
-class User
+module Users
   class PostsController < ApplicationController
     before_action :set_post, only: %i[show edit update destroy star]
     def new
@@ -31,7 +31,7 @@ class User
 
     def destroy
       @post.destroy
-      redirect_to user_posts_path
+      redirect_to users_posts_path
     end
 
     def star

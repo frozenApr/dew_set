@@ -1,4 +1,4 @@
-class User
+module Users
   class PhotosController < ApplicationController
     before_action :set_photo, only: %i[show edit update destroy like star]
     def new
@@ -11,7 +11,7 @@ class User
       @photo = current_user.photos.new(photo_params)
       if @photo.save
         params[:photo][:images][:url].each { |url| @photo.images.create(url: url) }
-        redirect_to user_photos_path
+        redirect_to users_photos_path
       else
         render 'new'
       end
@@ -23,7 +23,7 @@ class User
 
     def destroy
       @photo.destroy
-      redirect_to user_photos_path, notice: '相册已删除！'
+      redirect_to users_photos_path, notice: '相册已删除！'
     end
 
     def show
