@@ -71,3 +71,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'pg'
+# 中文错误页面
+gem 'whats-wrong'
+gem 'jwt'
+# 对ENV扩展方便开发
+gem 'dotenv-rails'
+
+# form and validations
+gem 'simple_form'
