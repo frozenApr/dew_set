@@ -9,18 +9,15 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" style="background: #f5bc81; color:white ">
+      <%= value %>
+      <button type="button" class="close" data-dismiss="alert"> &times; </button>
+    </div>
+    <% end %>
     <header>
-      <ul>
-        <li><a href="/photos">相册</a></li>
-        <% if current_user %>
-          <li><a href="#"><%= current_user.nick_name %></a></li>
-          <li><a href="/sessions/<%= current_user.id %>">退出</a></li>
-        <% else %>
-          <li><a href="/users/new">注册</a></li>
-          <li><a href="/sessions/new">登陆</a></li>
-        <% end %>
-      </ul>
+      <%= render 'layouts/header' %>
     </header>
     <%= yield %>
   </body>
-</html>
+  </html>

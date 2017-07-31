@@ -1,2 +1,70 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="photos_section">
+            <ul>
+              <% @photos.each do |photo| %>
+              <li>
+                <div class="img_wrapper">
+                  <img src="<%= photo.images.first.url %>">
+                  <div class="img_desc">
+                    <span class="img_title"><%= photo.title %></span>
+                    <span class="img_author"><%= photo.user.nick_name %></span>
+                  </div>
+                </div>
+                <p>
+                  <%= link_to '点赞', like_users_photo_path(photo), method: :post %><span><%= photo.likes_count %></span>
+                  <%= link_to '收藏', star_users_photo_path(photo), method: :post %>
+                </p>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="posts_section clear">
+            <ul>
+              <% @posts.each do |post| %>
+                <li>
+                  <div class="">
+                    <p><%= post.title %></p>
+                    <p><%= post.content %></p>
+                  </div>
+                  <div class="comment_list">
+                    <% post.comments.each do |comment| %>
+                    <div class="comment_cont clear">
+                      <div class="comment_avatar">
+                        <img src="<%= comment.user.avatar %>" alt="" width='40px' height='40px'>
+                      </div>
+                      <%= comment.content %>
+                    </div>
+                    <% end %>
+                  </div>
+                  <div class="comment_area">
+                    <%= form_for [post, @comment] do |f| %>
+                    <p>
+                      <%= f.label :content, '评论' %><br>
+                      <%= f.text_field :content, class:"input_content" %>
+                      <%= f.submit '发布', class:'btn btn-info btn-sm' %>
+                    </p>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+  .photos_section li{float: left;height:300px;width:23%;}
+  .photos_section .img_wrapper{position:relative; height:200px;overflow: hidden;margin:1%}
+  .photos_section .img_desc{position:absolute;padding:3%;height: 40px;width:200px;bottom:0px;color:white;font-weight: 200;background:rgba(23, 10, 10, 0.45)}
+  .photos_section img{width: 200px;min-height: 200px}
+  .photos_section .img_title{font-size:14px}
+  .photos_section .img_author{float: right}
+  .posts_section .input_content{width:70%;height: 30px}
+  .comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+</style>

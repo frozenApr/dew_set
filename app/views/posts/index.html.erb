@@ -3,18 +3,15 @@
       <div class="col-sm-12">
         <div class="photo-list">
           <ul>
-            <% @photos.each do |p| %>
+            <% @posts.each do |p| %>
             <li>
-              <%= link_to photo_path(p) do %>
-                <em class="desc"><%= p.title %></em>
-                <img src="<%= p.images.first.url %>">
-              <% end %>
+
             </li>
             <% end %>
           </ul>
         </div>
         <div class=""style="clear:both"></div>
-        <%= link_to 'new', new_photo_path %>
+        <%= link_to 'new', new_post_path %>
       </div>
    </div>
 </div>
