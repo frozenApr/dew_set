@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'kaminari', '~> 1.0.1'
 gem 'ransack', '~> 1.8.2'
-gem 'rucaptcha'
+# gem 'rucaptcha'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'qiniu', '~> 6.8.1'
@@ -59,6 +59,14 @@ group :development do
   gem 'bullet'
   gem 'awesome_print'
   gem 'rubocop', '~> 0.49.0', require: false
+  # 用pry代替IRB
+  gem 'pry-rails'
+  gem 'guard'
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
+  gem 'guard-bundler', require: false
+  gem 'guard-migrate'
+  gem 'guard-rails', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
