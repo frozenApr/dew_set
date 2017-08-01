@@ -81,3 +81,16 @@ gem 'dotenv-rails'
 
 # form and validations
 gem 'simple_form'
+
+gem 'http'
+gem 'rest-client'
+
+# assets
+source 'https://rails-assets.org' do
+  gem 'rails-assets-select2'
+  gem 'rails-assets-messenger'
+  gem 'rails-assets-vue'
+  # admin
+  gem 'rails-assets-font-awesome', '4.6.2'
+  gem 'rails-assets-adminlte', '2.3.2'
+end

@@ -1,0 +1,10 @@
+'zh-CN':
+  simple_form:
+    "yes": '是'
+    "no": '否'
+    required:
+      text: 'required'
+      html: ''
+      # mark: '*'
+    error_notification:
+      default_message: '请检查您填写的数据'

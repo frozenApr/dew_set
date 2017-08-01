@@ -1,5 +1,6 @@
 GEM
   remote: https://ruby.taobao.org/
+  remote: https://rails-assets.org/
   specs:
     action-store (0.3.2)
       rails (~> 5, >= 4.2.0)
@@ -119,8 +120,14 @@ GEM
     guard-rails (0.8.0)
       guard (~> 2.11)
       guard-compat (~> 1.0)
+    http (2.2.2)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    http-form_data (1.0.3)
     http_parser.rb (0.6.0)
     i18n (0.8.6)
     jbuilder (2.7.0)
@@ -205,6 +212,13 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.1.2)
       sprockets-rails (>= 2.0.0)
+    rails-assets-adminlte (2.3.2)
+    rails-assets-font-awesome (4.6.2)
+    rails-assets-jquery (3.2.1)
+    rails-assets-messenger (1.5.0)
+      rails-assets-jquery
+    rails-assets-select2 (4.0.3)
+    rails-assets-vue (2.4.2)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -318,6 +332,7 @@ DEPENDENCIES
   guard-livereload
   guard-migrate
   guard-rails
+  http
   jbuilder (~> 2.5)
   jquery-rails
   jwt
@@ -329,7 +344,13 @@ DEPENDENCIES
   qiniu (~> 6.8.1)
   rack-livereload
   rails (~> 5.1.1)
+  rails-assets-adminlte (= 2.3.2)!
+  rails-assets-font-awesome (= 4.6.2)!
+  rails-assets-messenger!
+  rails-assets-select2!
+  rails-assets-vue!
   ransack (~> 1.8.2)
+  rest-client
   rubocop (~> 0.49.0)
   sass-rails (~> 5.0)
   selenium-webdriver
