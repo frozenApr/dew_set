@@ -1,22 +1,49 @@
-<div class="container">
-   <div class="row">
-      <div class="col-sm-12">
-        <div class="photo-list">
-          <ul>
-            <% @posts.each do |p| %>
-            <li>
-
-            </li>
-            <% end %>
-          </ul>
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" style="padding-left:0;padding-right:0">
+          <div class="posts_section clear">
+            <ul>
+              <% @posts.each do |post| %>
+              <li class="one_post">
+                <div class="post_info">
+                  <h4><%= post.title %></h4>
+                  <a href="<%= post_path(post) %>"><p><%= post.content %></p></a>
+                  <div class="post_image">
+                    <% post.images.first(4).each do |i| %>
+                      <img src="<%= i.url %>" alt="">
+                    <% end %>
+                  </div>
+                  <div class="post_detial">
+                    <span><%= post.city %>
+                    <span><%= time_ago_in_words(post.created_at)%><span>
+                    <span>￥<%= post.price %></span>
+                  </div>
+                  <div class="visit_info">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <div class=""style="clear:both"></div>
-        <%= link_to 'new', new_post_path %>
       </div>
-   </div>
+    </div>
+  </div>
 </div>
 <style media="screen">
-.photo-list li{float: left;width:200px;height:200px;overflow: hidden;margin-right: 20px;margin-bottom: 10px}
-.photo-list img{width: 200px;min-height: 200px}
-.photo-list .desc{position: absolute;z-index: 111;;text-decoration: none;bottom: 170px}
+.bs-docs-section {background: #ececf3}
+.posts_section ul{padding: 0}
+.one_post{background: white; padding:10px; margin-bottom: 10px}
+.comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.post_info a{text-decoration:none; color: black}
+.post_info a:hover{text-decoration:none;color:black}
+.post_image{width:1100px; height:180px; overflow:hidden}
+.post_image img{width:270px; height:auto;}
+.post_detial {margin-top: 10px; color: grey}
+.visit_info .glyphicon{color: #5bc0de;}
 </style>

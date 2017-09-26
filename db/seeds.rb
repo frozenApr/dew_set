@@ -3,4 +3,6 @@
 #
 # Examples:
 #
-User.create!(nick_name: 'sun', phone_number: '13455667788', gender: 1,  place: "hangzhou", password: "12345678", password_confirmation: "12345678")
+3.times do |i|
+  User.create!(nick_name: "test_#{i}", phone_number: "1345566778#{i}", gender: 1,  place: "hangzhou", password: "12345678", password_confirmation: "12345678")
+end

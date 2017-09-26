@@ -10,7 +10,7 @@
                 <div class="img_wrapper">
                   <img src="<%= photo.images.first.url %>">
                   <div class="img_desc">
-                    <span class="img_title"><%= photo.title %></span>
+                    <span class="img_title"><%= link_to photo.title, photo_path(photo), class:'white_link'%> </span>
                     <span class="img_author"><%= photo.user.nick_name %></span>
                   </div>
                 </div>
@@ -25,31 +25,12 @@
           <div class="posts_section clear">
             <ul>
               <% @posts.each do |post| %>
-                <li>
-                  <div class="">
-                    <p><%= post.title %></p>
-                    <p><%= post.content %></p>
-                  </div>
-                  <div class="comment_list">
-                    <% post.comments.each do |comment| %>
-                    <div class="comment_cont clear">
-                      <div class="comment_avatar">
-                        <img src="<%= comment.user.avatar %>" alt="" width='40px' height='40px'>
-                      </div>
-                      <%= comment.content %>
-                    </div>
-                    <% end %>
-                  </div>
-                  <div class="comment_area">
-                    <%= form_for [post, @comment] do |f| %>
-                    <p>
-                      <%= f.label :content, '评论' %><br>
-                      <%= f.text_field :content, class:"input_content" %>
-                      <%= f.submit '发布', class:'btn btn-info btn-sm' %>
-                    </p>
-                    <% end %>
-                  </div>
-                </li>
+              <li>
+                <div class="">
+                  <p><%= post.title %></p>
+                  <p><%= post.content %></p>
+                </div>
+              </li>
               <% end %>
             </ul>
           </div>
@@ -59,12 +40,13 @@
   </div>
 </div>
 <style media="screen">
-  .photos_section li{float: left;height:300px;width:23%;}
-  .photos_section .img_wrapper{position:relative; height:200px;overflow: hidden;margin:1%}
-  .photos_section .img_desc{position:absolute;padding:3%;height: 40px;width:200px;bottom:0px;color:white;font-weight: 200;background:rgba(23, 10, 10, 0.45)}
-  .photos_section img{width: 200px;min-height: 200px}
-  .photos_section .img_title{font-size:14px}
-  .photos_section .img_author{float: right}
-  .posts_section .input_content{width:70%;height: 30px}
-  .comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.photos_section li{float: left;height:300px;width:23%;}
+.photos_section .img_wrapper{position:relative; height:200px;overflow: hidden;margin:1%}
+.photos_section .img_desc{position:absolute;padding:3%;height: 40px;width:200px;bottom:0px;color:white;font-weight: 200;background:rgba(23, 10, 10, 0.45)}
+.photos_section img{width: 200px;min-height: 200px}
+.photos_section .img_title{font-size:14px}
+.photos_section .img_author{float: right}
+.posts_section .input_content{width:70%;height: 30px}
+.comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.comment_list .replay_list .comment_author{color: #5bc0de}
 </style>

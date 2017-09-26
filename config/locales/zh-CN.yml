@@ -1,0 +1,79 @@
+# Chinese (China) translations for Ruby on Rails
+zh:
+  # Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
+  direction: ltr
+  jquery:
+    locale: "zh-CN"
+  gender:
+    male: 男
+    female: 女
+    unknow: 保密
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b%d日"
+      long: "%Y年%b%d日"
+
+    day_names: [星期天, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [日, 一, 二, 三, 四, 五, 六]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    # Used in date_select and datime_select.
+    order:
+      - :year
+      - :month
+      - :day
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"
+      time: "%H:%M"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+    am: "上午"
+    pm: "下午"
+
+  datetime:
+    in_today: "今天%H:%M"
+    distance_in_words:
+      half_a_minute: "半分钟"
+      less_than_x_seconds:
+        one: "一秒内"
+        other: "少于 %{count} 秒"
+      x_seconds:
+        one: "一秒"
+        other: "%{count} 秒"
+      less_than_x_minutes:
+        one: "一分钟内"
+        other: "少于 %{count} 分钟"
+      x_minutes:
+        one: "一分钟"
+        other: "%{count} 分钟"
+      about_x_hours:
+        one: "一小时前"
+        other: "%{count}小时前"
+      x_hours:
+        one:   "1小时"
+        other: "%{count}小时"
+      x_days:
+        one: "一天"
+        other: "%{count}天"
+      about_x_months:
+        one: "一个前"
+        other: "%{count}个月前"
+      x_months:
+        one: "一个月"
+        other: "%{count} 个月"
+      about_x_years:
+        one: "大约一年"
+        other: "%{count} 年"
+      over_x_years:
+        one: "超过一年"
+        other: "超过 %{count} 年"
+      almost_x_years:
+        one:   "将近 1 年"
+        other: "将近 %{count} 年"
