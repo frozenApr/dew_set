@@ -1,0 +1,72 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section bg-white">
+    <div class="makeups_section clear">
+      <div class="makeup_info">
+        <div class="makeup_wrapper">
+          <div class="makeup_content">
+            <div class="section_first">
+              <h4 class="left"><%= @makeup.title %></h4>
+            </div>
+            <div class="section_second left clear">
+              <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span><%= @makeup.city %> | <%= @makeup.place %></span>
+              <span class="glyphicon glyphicon-time" aria-hidden="true"><span><%= @makeup.time %></span>
+              <span class="glyphicon glyphicon-yen" aria-hidden="true"><span><%= @makeup.price %></span>
+              <span>成片:<%= @makeup.outcome %></span>
+            </div>
+            <div class="section_third right">
+              <span>可提供服装:<%= @makeup.has_clothing ? "提供" : "不提供" %></span>
+              <span>可提供造型:<%= @makeup.has_modelling ? "提供" : "不提供" %></span>
+            </div>
+            <div class="section_fourth clear">
+              <%= @makeup.content %>
+            </div>
+            <div class="dropdown_comment right">
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+            </div>
+            <div class="comment-menu">
+              <div class="comment_list">
+                <% @makeup.comments.includes(:author, :original_author).each do |comment| %>
+                <div class="comment_cont clear">
+                  <%= render partial: 'comment_content', locals: { comment: comment } %>
+                </div>
+                <div class="replay_area">
+                  <div class="comment_area">
+                    <%= render partial: 'comment_form', locals: { makeup: @makeup, comment: comment } %>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+              <div class="comment_area">
+                <%= render partial: 'comment_form', locals: { makeup: @makeup, comment: nil } %>
+              </div>
+            </div>
+          </div>
+          <div class="makeup_img clear">
+            <div class="img-list">
+              <% @makeup.images.each do |i| %>
+              <img src="<%= i.url %>">
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+.makeup_info .makeup_wrapper{margin: 10px auto;}
+.makeup_info .makeup_content{padding: 15px 10px; margin-bottom:10px; background: white}
+.makeup_info img{width: 200px;min-height: 200px}
+.makeup_info .section_third, .section_second {margin:10px;color: #e56820;}
+.makeup_info span{margin-right:10px}
+.makeup_info .makeup_img {padding: 15px 10px; background: white}
+.makeup_info .makeup_img .img-list {margin-top: 20px}
+.makeup_info .comment-menu {display: none}
+.comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.comment_list .replay_list .comment_author{color: #5bc0de}
+</style>
+<script type="text/javascript">
+  $(".dropdown_comment").click(function(){
+    $(".comment-menu").toggle();
+  })
+</script>

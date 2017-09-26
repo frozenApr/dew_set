@@ -47,7 +47,7 @@
       loadImg: function() {   //2 加载图片
         var _this = this;    //缓存全局this
         $.ajax({
-          url: '/photos/<%= @photo.id %>',
+          url: '/users/makeups/<%= @makeup.id %>',
           type: 'get',
           dataType: 'json',
           success: function(data){

@@ -1,0 +1,49 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" style="padding-left:0;padding-right:0">
+          <div class="makeups_section clear">
+            <ul>
+              <% @makeups.each do |makeup| %>
+              <li class="one_makeup">
+                <div class="makeup_info">
+                  <h4><%= makeup.title %></h4>
+                  <a href="<%= makeup_path(makeup) %>"><p><%= makeup.brief_intro %></p></a>
+                  <div class="makeup_image">
+                    <% makeup.images.first(4).each do |i| %>
+                      <img src="<%= i.url %>" alt="">
+                    <% end %>
+                  </div>
+                  <div class="makeup_detial">
+                    <span><%= makeup.city %>
+                    <span><%= time_ago_in_words(makeup.created_at)%><span>
+                    <span>￥<%= makeup.price %></span>
+                  </div>
+                  <div class="visit_info">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+.bs-docs-section {background: #ececf3}
+.makeups_section ul{padding: 0}
+.one_makeup{background: white; padding:10px; margin-bottom: 10px}
+.comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.makeup_info a{text-decoration:none; color: black}
+.makeup_info a:hover{text-decoration:none;color:black}
+.makeup_image{width:1100px; height:180px; overflow:hidden}
+.makeup_image img{width:270px; height:auto;}
+.makeup_detial {margin-top: 10px; color: grey}
+.visit_info .glyphicon{color: #5bc0de;}
+</style>
