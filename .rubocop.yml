@@ -4,9 +4,11 @@ AllCops:
   Exclude:
     - bin/**/*
     - db/*.rb
+    - db/migrate/*
     - Gemfile
     - config/**/*
     - test/test_helper.rb
+    - Guardfile
 Documentation:
   Enabled: false
 Metrics/AbcSize:

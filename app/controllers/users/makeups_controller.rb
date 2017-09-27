@@ -34,7 +34,6 @@ module Users
       end
     end
 
-
     private
 
     def makeup_params

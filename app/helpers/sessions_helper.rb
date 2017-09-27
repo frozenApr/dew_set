@@ -5,8 +5,7 @@ module SessionsHelper
     user.update(remember_token: User.encrypt(remember_token))
     self.current_user = user
   end
-  #111111111
-  #hhhhhhh
+
   def sign_out
     User.find(params[:id]).remember_token = nil
     # self.remember_token = nil
