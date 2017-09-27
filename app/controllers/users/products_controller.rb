@@ -37,7 +37,8 @@ module Users
     private
 
     def product_params
-      params.require(:product).permit(:title, :brief_intro, :city, :kind, :price, :ori_price, :free_shipping, :use_state)
+      params.require(:product).permit(:title, :brief_intro, :city, :kind, :price,
+                                      :ori_price, :free_shipping, :use_state)
     end
 
     def set_product
