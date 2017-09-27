@@ -41,6 +41,7 @@ gem 'qiniu', '~> 6.8.1'
 # gem 'bcrypt-ruby', '3.1.5'
 gem 'awesome_print'
 gem 'action-store'
+gem 'high_voltage'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -87,10 +88,13 @@ gem 'rest-client'
 
 # assets
 source 'https://rails-assets.org' do
+  gem 'rails-assets-es5-shim'
+  gem 'rails-assets-raf.js' # requestAnimationFrame polyfill
   gem 'rails-assets-select2'
   gem 'rails-assets-messenger'
   gem 'rails-assets-vue'
   # admin
   gem 'rails-assets-font-awesome', '4.6.2'
   gem 'rails-assets-adminlte', '2.3.2'
+  gem 'rails-assets-eventemitter2'
 end

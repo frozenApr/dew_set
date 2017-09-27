@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'home/index'
-
+  get "templates/*id" => 'templates#show', as: :template, format: false
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'home#index'
   resources :users, only: [:new, :create, :update]
