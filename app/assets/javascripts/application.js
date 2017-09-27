@@ -10,7 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require raf.js/raf.js
 //= require rails-ujs
+//= require eventemitter2
+//= require lodash
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -18,3 +21,4 @@
 //= require_tree .
 //= require qiniu
 //= require common
+//= require app/index

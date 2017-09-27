@@ -120,6 +120,7 @@ GEM
     guard-rails (0.8.0)
       guard (~> 2.11)
       guard-compat (~> 1.0)
+    high_voltage (3.0.0)
     http (2.2.2)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -213,10 +214,13 @@ GEM
       railties (= 5.1.2)
       sprockets-rails (>= 2.0.0)
     rails-assets-adminlte (2.3.2)
+    rails-assets-es5-shim (4.5.9)
+    rails-assets-eventemitter2 (4.1.0)
     rails-assets-font-awesome (4.6.2)
     rails-assets-jquery (3.2.1)
     rails-assets-messenger (1.5.0)
       rails-assets-jquery
+    rails-assets-raf.js (0.0.4)
     rails-assets-select2 (4.0.3)
     rails-assets-vue (2.4.2)
     rails-dom-testing (2.0.3)
@@ -332,6 +336,7 @@ DEPENDENCIES
   guard-livereload
   guard-migrate
   guard-rails
+  high_voltage
   http
   jbuilder (~> 2.5)
   jquery-rails
@@ -345,8 +350,11 @@ DEPENDENCIES
   rack-livereload
   rails (~> 5.1.1)
   rails-assets-adminlte (= 2.3.2)!
+  rails-assets-es5-shim!
+  rails-assets-eventemitter2!
   rails-assets-font-awesome (= 4.6.2)!
   rails-assets-messenger!
+  rails-assets-raf.js!
   rails-assets-select2!
   rails-assets-vue!
   ransack (~> 1.8.2)
@@ -365,4 +373,4 @@ DEPENDENCIES
   whats-wrong
 
 BUNDLED WITH
-   1.15.1
+   1.15.3
