@@ -1,0 +1,49 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" style="padding-left:0;padding-right:0">
+          <div class="posts_section clear">
+            <ul>
+              <% @products.each do |product| %>
+              <li class="one_post">
+                <div class="post_info">
+                  <h4><%= product.title %></h4>
+                  <a href="<%= product_path(product) %>"><p><%= product.brief_intro %></p></a>
+                  <div class="post_image">
+                    <% product.images.first(4).each do |i| %>
+                      <img src="<%= i.url %>" alt="">
+                    <% end %>
+                  </div>
+                  <div class="post_detial">
+                    <span><%= product.city %>
+                    <span><%= time_ago_in_words(product.created_at)%><span>
+                    <span>￥<%= product.price %></span>
+                  </div>
+                  <div class="visit_info">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+.bs-docs-section {background: #ececf3}
+.posts_section ul{padding: 0}
+.one_post{background: white; padding:10px; margin-bottom: 10px}
+.comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.post_info a{text-decoration:none; color: black}
+.post_info a:hover{text-decoration:none;color:black}
+.post_image{width:1100px; height:180px; overflow:hidden}
+.post_image img{width:270px; height:auto;}
+.post_detial {margin-top: 10px; color: grey}
+.visit_info .glyphicon{color: #5bc0de;}
+</style>

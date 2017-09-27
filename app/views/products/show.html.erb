@@ -1,0 +1,66 @@
+<div class="bs-docs-container">
+  <div class="bs-docs-section bg-white">
+    <div class="posts_section clear">
+      <div class="post_info">
+        <div class="post_wrapper">
+          <div class="post_content">
+            <div class="section_first">
+              <h4 class="left"><%= @product.title %></h4>
+            </div>
+            <div class="section_second left clear">
+              <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span><%= @product.city %></span>
+              <span class="glyphicon glyphicon-yen" aria-hidden="true"><span><%= @product.price %></span>
+            </div>
+            <div class="section_fourth clear">
+              <%= @product.brief_intro %>
+            </div>
+            <div class="dropdown_comment right">
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+            </div>
+            <div class="comment-menu">
+              <div class="comment_list">
+                <% @product.comments.includes(:author, :original_author).each do |comment| %>
+                <div class="comment_cont clear">
+                  <%= render partial: 'comment_content', locals: { comment: comment } %>
+                </div>
+                <div class="replay_area">
+                  <div class="comment_area">
+                    <%= render partial: 'comment_form', locals: { product: @product, comment: comment } %>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+              <div class="comment_area">
+                <%= render partial: 'comment_form', locals: { product: @product, comment: nil } %>
+              </div>
+            </div>
+          </div>
+          <div class="post_img clear">
+            <div class="img-list">
+              <% @product.images.each do |i| %>
+              <img src="<%= i.url %>">
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+.post_info .post_wrapper{margin: 10px auto;}
+.post_info .post_content{padding: 15px 10px; margin-bottom:10px; background: white}
+.post_info img{width: 200px;min-height: 200px}
+.post_info .section_third, .section_second {margin:10px;color: #e56820;}
+.post_info span{margin-right:10px}
+.post_info .post_img {padding: 15px 10px; background: white}
+.post_info .post_img .img-list {margin-top: 20px}
+.post_info .comment-menu {display: none}
+.comment_list .comment_avatar{width:40px; height:40px;border: 1px solid #ffffff;border-radius:20px;overflow:hidden;float: left}
+.comment_list .replay_list .comment_author{color: #5bc0de}
+</style>
+<script type="text/javascript">
+  $(".dropdown_comment").click(function(){
+    $(".comment-menu").toggle();
+  })
+</script>

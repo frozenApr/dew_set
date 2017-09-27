@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :makeups
+  has_many :products
 
   before_create :create_remember_token
 

@@ -1,0 +1,112 @@
+
+<style>
+    .img-preview{
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .img-row {
+      /*margin-bottom: 8px;*/
+    }
+    .img-row:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .img-box {
+      float: left;
+    }
+    .img-line .img-box:first-child {
+      padding-left: 0;
+    }
+</style>
+<div class="bs-docs-container">
+  <div class="bs-docs-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="img-preview">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+	<script>
+    function Barrels($ct) {    //0 创建对象
+      this.$ct = $ct;
+      // this.imgNum = 3;
+      this.baseHeight = 200; //！！！！！！预设行高！！！！！！
+      this.rowList = [];    //创建空数组，用来放置拿到的图片
+      this.loadImg();       //开始下载图片
+    }
+    Barrels.prototype = {
+      loadImg: function() {   //2 加载图片
+        var _this = this;    //缓存全局this
+        $.ajax({
+          url: '/users/events/<%= @event.id %>',
+          type: 'get',
+          dataType: 'json',
+          success: function(data){
+            var imgUrls = data;
+            $.each(imgUrls,function(idx, url){
+              var img = new Image();
+              img.src = url;
+              img.onload = function(){
+                var originWidth = img.width,
+                    originHeight = img.height,
+                    ratio = originWidth/originHeight;//！！！！！！得到图片原始比例
+                var imgInfo = {
+                  target: $(img),
+                  width: _this.baseHeight*ratio,//！！！！！！首次缩放
+                  height: _this.baseHeight,
+                  ratio: ratio
+                };
+                _this.render(imgInfo);
+              };
+            });
+          }
+        });
+
+      },
+      render: function(imgInfo){    // 3 预先摆放
+        var _this = this;
+        var rowList = this.rowList,
+            rowWidth = 0,
+            rowHeight = 0,
+            clientWidth = this.$ct.width(),
+            lastImgInfo = imgInfo;
+        this.rowList.push(imgInfo);
+        $.each(rowList,function(idx, imgInfo){
+          rowWidth += imgInfo.width;
+          if(rowWidth  > clientWidth ){
+            // rowList.pop();
+            rowWidth = rowWidth - lastImgInfo.width;
+            rowHeight = clientWidth * _this.baseHeight / rowWidth;//！！！！！！再次缩放
+            _this.createRow(rowHeight);
+            _this.rowList = [];
+            _this.rowList.push(lastImgInfo);
+          }else {
+            _this.createRow(_this.baseHeight);
+          }
+        });
+      },
+      createRow: function(rowHeight){    // 4 正式摆放图片
+        // console.log('createRow');
+        var $rowCt = $('<div class="img-row"></div>');
+        $.each(this.rowList, function(idx, imgInfo){
+          var $imgCt = $('<div class="img-box"></div>'),
+              $img = imgInfo.target;
+              $img.height(rowHeight);
+              $imgCt.append($img);
+              $rowCt.append($imgCt);
+        });
+        // console.log(this.$ct);
+        this.$ct.append($rowCt);
+      },
+    };
+    var barrels = new Barrels($('.img-preview'));
+	</script>

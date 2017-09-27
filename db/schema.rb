@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926101738) do
+ActiveRecord::Schema.define(version: 20170927071226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,25 @@ ActiveRecord::Schema.define(version: 20170926101738) do
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["original_author_id"], name: "index_comments_on_original_author_id"
     t.index ["original_id"], name: "index_comments_on_original_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "photo_style"
+    t.text "content"
+    t.text "content_raw"
+    t.string "city"
+    t.decimal "model_price", precision: 8, scale: 2, default: "0.0"
+    t.decimal "cameramen_price", precision: 8, scale: 2, default: "0.0"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "model_num"
+    t.integer "cameramen_num"
+    t.integer "user_id"
+    t.datetime "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_events_on_city"
   end
 
   create_table "images", force: :cascade do |t|
@@ -96,6 +115,24 @@ ActiveRecord::Schema.define(version: 20170926101738) do
     t.index ["has_modelling"], name: "index_posts_on_has_modelling"
     t.index ["post_type"], name: "index_posts_on_post_type"
     t.index ["price"], name: "index_posts_on_price"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.string "brief_intro"
+    t.string "city"
+    t.integer "kind", default: 0
+    t.decimal "price", precision: 8, scale: 2, default: "0.0"
+    t.decimal "ori_price", precision: 8, scale: 2, default: "0.0"
+    t.boolean "free_shipping", default: true
+    t.integer "use_state", default: 10
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_products_on_city"
+    t.index ["kind"], name: "index_products_on_kind"
+    t.index ["price"], name: "index_products_on_price"
+    t.index ["use_state"], name: "index_products_on_use_state"
   end
 
   create_table "users", force: :cascade do |t|

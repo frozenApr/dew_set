@@ -39,7 +39,6 @@ gem 'qiniu', '~> 6.8.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # gem 'bcrypt-ruby', '3.1.5'
-gem 'awesome_print'
 gem 'action-store'
 gem 'high_voltage'
 group :development, :test do

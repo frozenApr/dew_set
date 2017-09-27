@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'home#index'
   resources :users, only: [:new, :create, :update]
-  resources :photos
-  resources :makeups
+  resources :photos, only: [:index, :show]
+  resources :makeups, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :comments
+  end
+  resources :events, only: [:index, :show] do
+    resources :comments
+  end
   resources :posts do
     resources :comments
   end
@@ -20,7 +26,9 @@ Rails.application.routes.draw do
       end
     end
     resources :makeups
+    resources :products
     resources :posts
+    resources :events
   end
   #user end
 

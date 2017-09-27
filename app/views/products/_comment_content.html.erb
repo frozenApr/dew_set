@@ -1,0 +1,9 @@
+<div class="comment_avatar">
+  <img src="<%= comment.author.avatar %>" alt="" width='40px' height='40px'>
+</div>
+<div class="replay_list">
+  <span class="comment_author"><%= comment.author.try(:nick_name) %></span>
+  <% if comment.original_author %>回复<% end %>
+  <span class="comment_author"><%= comment.original_author.try(:nick_name) %></span>:
+  <span><%= comment.content %></span>
+</div>
