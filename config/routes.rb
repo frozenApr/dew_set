@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] do
+    collection do
+      get :logout
+    end
+  end
 
   #user start
   namespace :users do
