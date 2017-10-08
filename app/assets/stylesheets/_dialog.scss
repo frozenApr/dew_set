@@ -1,7 +1,48 @@
 .login, .register {
+  margin-top: 12px;
+  border: 0px;
+  .login-by-password {
+    margin-top: 30px;
+  }
   h4 {
+    display: inline;
     padding-bottom: 10px;
-    font-size: 16px;
+    font-size: 24px;
+  }
+  .register-help {
+    margin-top: 8px;
+    display: inline;
+    a {
+      color: black;
+      text-decoration: underline;
+    }
+  }
+  .form-group {
+    padding-top: 14px;
+    margin-bottom: 0px;
+    .form-control {
+      padding-top: 12px;
+      height: 38px;
+      border: 0px;
+      border-bottom: 1px solid #ccc;
+      outline: 0px;
+      box-shadow: inset 0px 0px 0px 0px red;
+      border-radius: 0px;
+    }
+  }
+  .send-sms-btn, .btn-forget {
+    border: 0px;
+    top: 3px;
+    color: #ccc;
+    cursor: auto;
+    border-radius: 0px;
+    border-bottom: 1px solid #ccc;
+  }
+  .btn-submit {
+    margin-top: 20px;
+    background-color:  #d8a717;
+    height: 48px;
+    border: 0px;
   }
 }
 .login-dialog {

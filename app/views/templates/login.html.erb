@@ -1,44 +1,31 @@
 <div class="login">
   <h4>登录</h4>
+  <div class="register-help pull-right">
+    还没有帐号,<a href="javascript:void(0)" onclick="App.user.register()">立即注册</a>
+  </div>
   <%= form_for(User.new, url: sessions_path, data: {
-      remote: true, type: 'script'
-  }, html: {class: 'login-by-password'}, validate: true) do |f| %>
-      <div class="form-group">
-        <div hint-css>
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="glyphicon glyphicon-phone"></i>
-            </span>
-            <input name="user[phone_number]" class="form-control" tabindex="1" placeholder="请输入手机号">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default" onclick="App.user.loginBySms(this)">短信登录</button>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div hint-css>
-          <div class="input-group">
-            <span class="input-group-addon">
-              <i class="glyphicon glyphicon-lock"></i>
-            </span>
-            <%= f.text_field :password, type: 'password', class: 'form-control', tabindex: '2', placeholder: '请输入密码' %>
-            <input type="hidden" name="login_type" value="password">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-6">
-          <button type="button" class="btn btn-default btn-block" onclick="App.user.register()">注册</button>
-        </div>
-        <div class="col-xs-6">
-          <button type="submit" class="btn btn-primary btn-block">登录</button>
-        </div>
-      </div>
-  <% end %>
-
-  <hr class='login'/>
-    <div class="otherlogin">
-      <li>使用其它账号登录:</li>
+    remote: true, type: 'script'
+    }, html: {class: 'login-by-password'}) do |f| %>
+    <div class="form-group">
+      <input name="user[phone_number]" class="form-control" tabindex="1" placeholder="手机号\邮箱\用户名">
     </div>
-</div>
+    <div class="form-group">
+      <div class="input-group">
+        <%= f.text_field :password, type: 'password', class: 'form-control', tabindex: '2', placeholder: '输入密码' %>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default btn-forget">忘记密码?</button>
+        </span>
+      </div>
+    </div>
+    <div class="row margin-bottom-12">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-primary btn-submit btn-block">登录</button>
+      </div>
+    </div>
+    <% end %>
+
+    <hr class='login'/>
+    <div class="otherlogin">
+      使用其它账号登录
+    </div>
+  </div>

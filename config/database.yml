@@ -1,18 +1,21 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  username: myapp
-  password:
+  # encoding: utf8
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
-  database: dew_set_dev
+  database: mypgdata
+  pool: 5
 
 test:
   <<: *default
-  database: dew_set_test
+  database: mypgdata
+  pool: 5
 
 production:
   <<: *default
-  database: dew_set_pro
+  database: mypgdata
+  pool: 5

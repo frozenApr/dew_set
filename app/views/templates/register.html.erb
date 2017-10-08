@@ -1,58 +1,36 @@
 <div class="register">
   <h4>
-      用户注册
+    用户注册
   </h4>
   <%= form_for(User.new, url: users_path, data: {remote: true, type: 'script'}, validate: true) do |f| %>
-    <div class="form-group">
-      <div class="input-group">
-      <span class="input-group-addon">
-        <i class="glyphicon glyphicon-user"></i>
+  <div class="form-group">
+    <%= f.text_field :nick_name, type: 'text', class: 'form-control', placeholder: '请输入姓名' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password, class: 'form-control', placeholder: '请设置密码', 'data-toggle': 'password' %>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.text_field :phone_number, class: 'form-control', placeholder: '请输入手机号码' %>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default send-sms-btn" onclick="App.user.registerSms(this)">获取验证码</button>
       </span>
-        <%= f.text_field :nick_name, type: 'text', class: 'form-control', placeholder: '请输入姓名' %>
-      </div>
     </div>
+  </div>
 
-    <div class="form-group">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <i class="glyphicon glyphicon-lock"></i>
-        </span>
-        <%= f.password_field :password, class: 'form-control', placeholder: '请设置密码', 'data-toggle': 'password' %>
-      </div>
-    </div>
+<div class="form-group">
+  <input name="vcode" type="text" class ="form-control" placeholder="请输入手机验短信证码" data-validate="true">
+</div>
 
-    <div class="form-group">
-      <div hint-scss>
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="glyphicon glyphicon-phone"></i>
-          </span>
-          <%= f.text_field :phone_number, class: 'form-control', placeholder: '请输入手机号码' %>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default send-sms-btn" onclick="App.user.registerSms(this)">获取验证码</button>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div hint-css>
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="glyphicon glyphicon-envelope"></i>
-          </span>
-          <input name="vcode" type="text" class ="form-control" placeholder="请输入手机验短信证码" data-validate="true">
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-6">
-        <button type="button" class="btn btn-default btn-block" onclick="App.user.login()">登录</button>
-      </div>
-      <div class="col-xs-6">
-        <button type="submit" class="btn btn-primary btn-block">注册</button>
-      </div>
-    </div>
-  <% end %>
+<div class="row margin-top-12">
+  <div class="col-xs-6">
+    <button type="button" class="btn btn-default btn-block" onclick="App.user.login()">登录</button>
+  </div>
+  <div class="col-xs-6">
+    <button type="submit" class="btn btn-primary btn-block">注册</button>
+  </div>
+</div>
+<% end %>
 </div>

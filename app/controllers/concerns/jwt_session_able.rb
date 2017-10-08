@@ -22,7 +22,7 @@ module JwtSessionAble
 
   def login_by(user, expires=1.hours.from_now)
     _set_token(user.id, expires)
-    redirect_to(flash[:login_back] || request.referer)
+    # redirect_to(request.referer)
   end
 
   def logout

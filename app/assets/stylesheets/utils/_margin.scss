@@ -1,0 +1,12 @@
+$margin-list: (4 8 12 20 40 80);
+$margin-dire: (top left right bottom);
+@each $num in $margin-list {
+  @each $dire in $margin-dire {
+    .margin-#{$dire}-#{$num} {
+      margin-#{$dire}: #{$num}px !important;
+    }
+    .margin-#{$dire}--#{$num} {
+      margin-#{$dire}: -#{$num}px !important;
+    }
+  }
+}
