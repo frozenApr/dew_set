@@ -38,7 +38,6 @@ Rails/SkipsModelValidations:
     - increment_counter
     - toggle!
     - touch
-    - update_all
     - update_attribute
     - update_column
     # - update_columns

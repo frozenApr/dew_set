@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :makeups
   has_many :products
+  has_many :messages
+  has_many :rooms
 
   before_create :create_remember_token
 

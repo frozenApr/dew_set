@@ -51,7 +51,7 @@ module Users
     end
 
     def set_photo
-      @photo = current_user.photos.find(params[:id])
+      @photo = Photo.find(params[:id])
     end
   end
 end
