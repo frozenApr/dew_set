@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
+  mount ActionCable.server => '/cable'
+
   get 'home/index'
   get "templates/*id" => 'templates#show', as: :template, format: false
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'home#index'
-  resources :users, only: [:new, :create, :update]
+  resources :users, only: [:new, :show, :create, :update]
   resources :photos, only: [:index, :show]
   resources :makeups, only: [:index, :show]
   resources :products, only: [:index, :show] do
