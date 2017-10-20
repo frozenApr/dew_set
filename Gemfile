@@ -96,4 +96,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-font-awesome', '4.6.2'
   gem 'rails-assets-adminlte', '2.3.2'
   gem 'rails-assets-eventemitter2'
+  gem 'rails-assets-messenger'
 end

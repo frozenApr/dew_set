@@ -1,0 +1,10 @@
+@import 'messenger/messenger';
+@import 'messenger/messenger-theme-future';
+@import 'messenger/messenger-theme-flat';
+@import 'messenger/messenger-theme-block';
+@import 'messenger/messenger-theme-air';
+@import 'messenger/messenger-theme-ice';
+
+ul.messenger.messenger-fixed {
+  z-index: 100000;
+}
