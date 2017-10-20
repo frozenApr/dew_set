@@ -1,0 +1,13 @@
+  $(function() {
+    <% if flash[:errors] %>
+    <%
+    errors = flash[:errors]
+    alert = errors.is_a?(Array) ? errors[0] : errors
+    %>
+    messenger.error(<%== alert.to_json %>)
+    <% elsif flash[:alert] %>
+    messenger.error(<%== flash[:alert].to_json %>)
+    <% elsif flash[:notice] %>
+    messenger.info(<%== flash[:notice].to_json %>)
+    <% end %>
+  })
