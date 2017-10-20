@@ -18,11 +18,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :sessions, only: [:new, :create, :destroy] do
-    collection do
-      get :logout
-    end
-  end
+
+  delete 'logout', to: 'sessions#destroy'
+  resources :sessions, only: [:new, :create]
 
   #user start
   namespace :users do

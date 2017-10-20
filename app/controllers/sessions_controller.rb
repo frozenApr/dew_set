@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
       login_by user
       redirect_to :root, notice: '登陆成功！'
     else
-      render 'new'
+      render :no_content
     end
   end
 
-  def logout
-    super
+  def destroy
+    logout
     redirect_to :root
   end
 end

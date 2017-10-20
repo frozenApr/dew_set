@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :rooms
 
   before_create :create_remember_token
+  # default_value
+  attribute :nick_name, default: 'ds_' + SecureRandom.hex(10)
 
   action_store :like, :photo, counter_cache: true
   action_store :star, :photo, counter_cache: true, user_counter_cache: true

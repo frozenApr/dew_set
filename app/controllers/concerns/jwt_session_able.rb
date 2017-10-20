@@ -2,9 +2,7 @@ module JwtSessionAble
   extend ActiveSupport::Concern
 
   included do
-    if defined?(helper_method)
-      helper_method :current_user, :current_user_id
-    end
+    helper_method :current_user, :current_user_id
   end
 
   protected
@@ -13,14 +11,14 @@ module JwtSessionAble
     cookies.fetch(:access_token, nil)
   end
 
-  def _set_token(id, expires=1.hours.from_now)
+  def _set_token(id, expires = 1.hour.from_now)
     cookies[:access_token] = {
-      value: JwtSession.encode({id: id}, expires: expires),
-      expires: expires,
+      value: JwtSession.encode({ id: id }, expires: expires),
+      expires: expires
     }
   end
 
-  def login_by(user, expires=1.hours.from_now)
+  def login_by(user, expires = 1.hour.from_now)
     _set_token(user.id, expires)
     # redirect_to(request.referer)
   end
@@ -33,40 +31,39 @@ module JwtSessionAble
     if defined?(@current_user_id).nil? || @current_user_id.nil?
       token = _get_token
       jwt_session = JwtSession.decode(token)
-      unless jwt_session.expire?
+      if jwt_session.expire?
+        @current_user_id = nil
+      else
         @current_user_id = jwt_session.data[:id]
         _set_token(@current_user_id) if jwt_session.need_refresh?
-      else
-        @current_user_id = nil
       end
     end
     @current_user_id
   end
 
   def current_user
-    if defined?(@current_user).nil? || @current_user.nil?
-      id = current_user_id
-      if id
-        @current_user = User.find_by(id: id)
-      else
-        @current_user = nil
-      end
-    end
+    # if defined?(@current_user).nil? || @current_user.nil?
+    # id = current_user_id
+    # if id
+    #   @current_user = User.find_by(id: id)
+    # else
+    #   @current_user = nil
+    # end
+    # end
+    @current_user = User.find_by(id: current_user_id) if defined?(@current_user).nil? || @current_user.nil?
     @current_user
   end
-
-  private
 
   class JwtSession
     require 'jwt'
 
-    @@expire_time = 1.hours
-    @@need_refresh_time = 30.minutes
+    EXPIRE_TIME = 1.hour
+    NEED_REFRESH_TIME = 30.minutes
 
-    def initialize payload
+    def initialize(payload)
       @payload = {
         expires: 0,
-        data: nil,
+        data: nil
       }.merge(payload)
     end
 
@@ -75,7 +72,7 @@ module JwtSessionAble
     end
 
     def need_refresh?
-      remaining < @@need_refresh_time.minutes
+      remaining < NEED_REFRESH_TIME.minutes
     end
 
     def expire?
@@ -87,22 +84,20 @@ module JwtSessionAble
       @payload[:data]
     end
 
-    def self.encode(data, options={})
-      options = {expires: @@expire_time.from_now}.merge(options)
+    def self.encode(data, options = {})
+      options = { expires: EXPIRE_TIME.from_now }.merge(options)
       payload = {
         expires: options[:expires].to_i,
-        data: data,
+        data: data
       }
       JWT.encode(payload, Rails.application.secrets.secret_key_base)
     end
 
     def self.decode(token)
-      begin
-        payload = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
-        self.new(payload.deep_symbolize_keys)
-      rescue
-        self.new({})
-      end
+      payload = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
+      new(payload.deep_symbolize_keys)
+    rescue
+      new({})
     end
   end
 end
